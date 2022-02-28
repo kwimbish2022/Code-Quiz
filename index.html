@@ -14,20 +14,55 @@
     <h1 class="countdown">Time</h1>
   </header>
 
-  <div class="container">
+  <div id="container" class="intro">
     <section id="quiz-intro">Coding Quiz Challenge
       <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-      <button class="btn" id="start-quiz">Start Quiz</button>
+        <button class="btn" id="start-quiz">Start Quiz</button>
     </section>
 
-    <section id="question-1">
+    <section id="question-1" class="question-hidden">
       <p>Commonly used data types DO NOT include:</p>
         <button class="btn" id="strings">1. Strings</button>
         <button class="btn" id="booleans">2. Booleans</button>
         <button class="btn" id="alerts">3. Alerts</button>
         <button class="btn" id="numbers">4. Numbers</button>
     </section>
+
+    <section id="question-2" class="question-hidden">
+      <p>The condition in an if/else statement is enclosed with:</p>
+        <button class="btn" id="strings">1. Quotes</button>
+        <button class="btn" id="booleans">2. Curly Brackets</button>
+        <button class="btn" id="alerts">3. Parenthesis</button>
+        <button class="btn" id="numbers">4. Square Brackets</button>
+    </section>
+    
+    <section id="question-3" class="question-hidden">
+      <p>Arrays in JavaScript can be used to store:</p>
+        <button class="btn" id="strings">1. Numbers and Strings</button>
+        <button class="btn" id="booleans">2. Other Arrays</button>
+        <button class="btn" id="alerts">3. Booleans</button>
+        <button class="btn" id="numbers">4. All of the above</button>
+    </section>
+
+    <section id="question-4" class="question-hidden">
+      <p>String values must be enclosed within ____ when being assigned to variables.</p>
+        <button class="btn" id="strings">1. Commas</button>
+        <button class="btn" id="booleans">2. Curly Brackets</button>
+        <button class="btn" id="alerts">3. Quotes</button>
+        <button class="btn" id="numbers">4. Parenthesis</button>
+    </section>
+
+    <section id="question-5" class="question-hidden">
+      <p>A very useful tool during development and debugging for printing content to the debugger is:</p>
+        <button class="btn" id="strings">1. JavaScript</button>
+        <button class="btn" id="booleans">2. Terminal/Bash</button>
+        <button class="btn" id="alerts">3. For Loops</button>
+        <button class="btn" id="numbers">4. console.log</button>
+    </section>
   </div>
+
+  <!-- TODO: how to have correct/incorrect popup under question after click -->
+  <!-- <div id="container" class="answers"></div> -->
 
     <script src="./assets/script.js"></script>
 </body>
