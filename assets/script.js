@@ -1,3 +1,5 @@
+// TODO: how to have correct/incorrect popup under question after click ?on html? //
+
 var timerEl = document.getElementById('countdown');
 
 // Timer that counts down from 60
