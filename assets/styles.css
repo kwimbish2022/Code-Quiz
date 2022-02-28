@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+/* define colors */
+:root {
+  --primary: #0a0a0a;
+  --secondary: #10434b;
+  --tertiary: #a1dce6;
+  font-size: 62.5%;
+}
+
+body {
+  color: var(--primary);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* apply styles to header */
+header {
+  padding: 20px 15px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;   
+}
+/* header styles end */
