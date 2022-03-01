@@ -22,6 +22,10 @@ const javaBtn = document.getElementById('java');
 const terminalBtn = document.getElementById('terminal');
 const for1Btn = document.getElementById('for1');
 const consoleBtn = document.getElementById('console');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+const submitBtn = document.getElementById('submit');
+const restartBtn = document.getElementById('restart');
 
 // define questions for quiz
 let currentQuestion = 0;
@@ -97,9 +101,96 @@ javaBtn.addEventListener('click',java);
 terminalBtn.addEventListener('click',terminal);
 for1Btn.addEventListener('click',for1);
 consoleBtn.addEventListener('click',console);
+prevBtn.addEventListener('click',prev);
+nextBtn.addEventListener('click',next);
+submitBtn.addEventListener('click',submit);
+restartBtn.addEventListener('click',restart);
 
+// create function to begin the quiz
+function beginQuiz() {
+  currentQuestion = 0;
+  questionText.innerHTML = questions[currentQuestion].question;
+  trueBtn.innerHTML = questions[currentQuestion].answers[0].option;
+  trueBtn.onclick = () => {
+    let ano=0;
+    if(questions[currentQuestion].answers[ano].answer){
+      if(score<3){
+        score++;
+      }
+    }
+    userScore.innerHTML = score;
+    if(currentQuestion<2){
+      next();      
+    }
+  }
+  falseBtn.innerHTML = questions[currentQuestion].answers[1].option;
+  falseBtn.onclick = () => {
+    let ano=1;
+    if(questions[currentQuestion].answers[ano].answer){
+      if(score<3){
+        sccore++;
+      }
+    }
+    userScore.innerHTML = score;
+    if(currentQuestion<2){
+      next();
+    }
+  }
+  prevBtn.classList.add('hide');
+}
 
+beginQuiz();
 
+// create function to restart-reset score
+function restart(){
+  currentQuestion = 0;
+  prevBtn.classList.remove('hide');
+  nextBtn.classList.remove('hide');
+  submitBtn.classList.remove('hide');
+  trueBtn.classList.remove('hide');
+  falseBtn.classList.remove('hide');
+  score = 0;
+  userScore.innerHTML = score;
+  beginQuiz();
+}
+
+// create function to go to next question
+
+function next(){
+  currentQuestion++;
+  if(currentQuestion>=2){
+    nextBtn.classList.add('hide');
+    prevBtn.classList.remove('hide');
+  }
+  questionText.innerHTML = questions[currentQuestion].question;
+  trueBtn.innerHTML = questions[currentQuestion].answers[0].option;
+  trueBtn.onclick = () => {
+    let ano=0;
+    if(questions[currentQuestion].answers[ano].answer){
+      if(score<3){
+        score++;
+      }
+    }
+    userScore.innerHTML = score;
+    if(currentQuestion<2){
+      next();
+    }
+  }
+  falseBtn.innerHTML = questions[currentQuestion].answers[1].option;
+  falseBtn.onclick = () => {
+    let ano=1;
+    if(questions[currentQuestion].answers[ano].answer){
+      if(score<3){
+        score++;
+      }
+    }
+    userScore.innerHTML = score;
+    if(currentQuestion<2){
+      next();
+    }
+  }
+  prevBtn.classList.remove('hide');
+}
 
 var timerEl = document.getElementById('countdown');
 
