@@ -1,4 +1,25 @@
 // TODO: how to have correct/incorrect popup under question after click ?on html? //
+const startBtn = document.getElementById('start-quiz');
+const stringsBtn = document.getElementById('strings');
+const booleansBtn = document.getElementById('booleans');
+const alertsBtn = document.getElementById('alerts');
+const numbersBtn = document.getElementById('numbers');
+const quotesBtn = document.getElementById('quotes');
+const curlyBtn = document.getElementById('curly');
+const parenthesisBtn = document.getElementById('parenthesis');
+const squareBtn = document.getElementById('square');
+const numbstringBtn = document.getElementById('numbstring');
+const otherBtn = document.getElementById('other');
+const boolBtn = document.getElementById('bool');
+const allBtn = document.getElementById('all');
+const commasBtn = document.getElementById('commas');
+const bracketsBtn = document.getElementById('brackets');
+const quotes2Btn = document.getElementById('quotes2');
+const parenthBtn = document.getElementById('parenth');
+const javaBtn = document.getElementById('java');
+const terminalBtn = document.getElementById('terminal');
+const forBtn = document.getElementById('for');
+const consoleBtn = document.getElementById('console');
 
 var timerEl = document.getElementById('countdown');
 
