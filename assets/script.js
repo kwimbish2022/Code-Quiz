@@ -1,4 +1,6 @@
 // TODO: how to have correct/incorrect popup under question after click ?on html? //
+
+// define-link buttons from html
 const startBtn = document.getElementById('start-quiz');
 const stringsBtn = document.getElementById('strings');
 const booleansBtn = document.getElementById('booleans');
@@ -18,9 +20,10 @@ const quotes2Btn = document.getElementById('quotes2');
 const parenthBtn = document.getElementById('parenth');
 const javaBtn = document.getElementById('java');
 const terminalBtn = document.getElementById('terminal');
-const forBtn = document.getElementById('for');
+const for1Btn = document.getElementById('for1');
 const consoleBtn = document.getElementById('console');
 
+// define questions for quiz
 let currentQuestion = 0;
 var score = 0;
 
@@ -71,6 +74,32 @@ let questions = [
     ]
   },
 ]
+
+// add event listeners to buttons
+startBtn.addEventListener('click',start-quiz);
+stringsBtn.addEventListener('click',strings);
+booleansBtn.addEventListener('click',booleans);
+alertsBtn.addEventListener('click',alerts);
+numbersBtn.addEventListener('click',numbers);
+quotesBtn.addEventListener('click',quotes);
+curlyBtn.addEventListener('click',curly);
+parenthesisBtn.addEventListener('click',parenthesis);
+squareBtn.addEventListener('click',square);
+numbstringBtn.addEventListener('click',numbstring);
+otherBtn.addEventListener('click',other);
+boolBtn.addEventListener('click',bool);
+allBtn.addEventListener('click',all);
+commasBtn.addEventListener('click',commas);
+bracketsBtn.addEventListener('click',brackets);
+quotes2Btn.addEventListener('click',quotes2);
+parenthBtn.addEventListener('click',parenth);
+javaBtn.addEventListener('click',java);
+terminalBtn.addEventListener('click',terminal);
+for1Btn.addEventListener('click',for1);
+consoleBtn.addEventListener('click',console);
+
+
+
 
 var timerEl = document.getElementById('countdown');
 
