@@ -21,6 +21,57 @@ const terminalBtn = document.getElementById('terminal');
 const forBtn = document.getElementById('for');
 const consoleBtn = document.getElementById('console');
 
+let currentQuestion = 0;
+var score = 0;
+
+let questions = [
+  {
+    question: "Commonly used data types DO NOT include:",
+    answers: [
+      {option:"1. Strings",answer:false},
+      {option:"2. Booleans",answer:false},
+      {option:"3. Alerts",answer:true},
+      {option:"4. Numbers",answer:false}      
+    ]
+  },
+  {
+    question: "The condition in an if/else statement is enclosed with ____",
+    answers: [
+      {option:"1. Quotes",answer:false},
+      {option:"2. Curly Brackets",answer:false},
+      {option:"3. Parenthesis",answer:true},
+      {option:"4. Square Brackets",answer:false}      
+    ]
+  },
+  {
+    question: "Arrays in JavasScript can be used to store:",
+    answers: [
+      {option:"1. Numbers and Strings",answer:false},
+      {option:"2. Other Arrays",answer:false},
+      {option:"3. Booleans",answer:false},
+      {option:"4. All of the above",answer:true}      
+    ]
+  },
+  {
+    question: "String values must be enclosed within ____ when being assigned to variables.",
+    answers: [
+      {option:"1. Commas",answer:false},
+      {option:"2. Curly Brackets",answer:false},
+      {option:"3. Quotes",answer:true},
+      {option:"4. Parenthesis",answer:false}      
+    ]
+  },
+  {
+    question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+    answers: [
+      {option:"1. JavaScript",answer:false},
+      {option:"2. Terminal/Bash",answer:false},
+      {option:"3. For Loops",answer:false},
+      {option:"4. console.log",answer:true}      
+    ]
+  },
+]
+
 var timerEl = document.getElementById('countdown');
 
 // Timer that counts down from 60
