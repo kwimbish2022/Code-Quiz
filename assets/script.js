@@ -59,29 +59,15 @@ let questions = [
 //  define variables
 const lastQuestion = questions.length - 1;
 let currentQuestion = 0;
-// let count = 0;
-// const questionTIME = 10; //10 seconds
-// const gaugeWidth = 150;
-// const gaugeUnit = gaugeWidth / questionTIME;
-// let TIMER;
+let count = 90;
+const questionTIME = 0; //10 seconds
+let TIMER;
 let score = 0;
-
-// var formsArray = [
-//     quizIntro = document.querySelector("#container-form"),
-//     highScoreForm = document.querySelector("#score"),
-//     questionForm = document.querySelector("#content-form")
-// ];
-// Funtion that reveals selected element while hiding all other elements in an array
-// function revealElement(element, elementArr){
-//     for(i=0; i < elementArr.length; i++){
-//         if(element !== elementArr[i]){
-//             elementArr[i].classList.add("hidden");
-//         }
-//         else{
-//             element.classList.remove("hidden");
-//         }
-//     }
-// }
+const numbHighScore = 10;
+const highScore = 'highscores';
+const highScoreString = localStorage.getItem(highScore);
+const highLight = JSON.parse(highScoreString) ?? [];
+const lowestScore = highLight[numbHighScore - 1]?.score ?? 0;
 
 // render question
 function renderQuestion() {
@@ -94,15 +80,33 @@ function renderQuestion() {
   btnOption4.innerHTML = q.btnOption4;
 }
 
-// add event listeners to button
-start.addEventListener('click',startQuiz);
+// create function to render timer and decrement for wrong answers
+var renderCounter = function (){
+  if(count >= questionTIME) {
+    counter.innerHTML = count;
+    count--;
+  }else{
+    count = 0;
+    answerIsWrong();
+    if(currentQuestion < lastQuestion){
+      currentQuestion++;
+      renderQuestion();
+    }else{
+      clearInterval(TIMER); 
+    }
+  }
+};
 
 // create function to begin the quiz
-function startQuiz() {  
+var startQuiz = function () {  
   renderQuestion();
   intro.classList.add("hidden");
   questionsection.classList.remove("hidden");
+  TIMER = setInterval(renderCounter,1000);
 }
+
+// add event listeners to button
+start.addEventListener('click',startQuiz);
 
 //for progress to render
 function renderResult(answerText) {
@@ -110,33 +114,31 @@ function renderResult(answerText) {
 }
 
 // for counter to render
-// function renderCounter(){
-//   if(count <= questionTIME) {
-//     counter.innerHTML = count;
-//     timeGauge.style.width = count * gaugeUnit + "px";
-//     count++
-//   }else{
-//     count = 0;
-//     answerIsWrong();
-//     if(currentQuestion < lastQuestion){
-//       currentQuestion++;
-//       renderQuestion();
-//     }else{
-//       clearInterval(TIMER);
-//     }
-//   }
-// }
+function renderCounter(){
+  if(count <= questionTIME) {
+    counter.innerHTML = count;
+    count++
+  }else{
+    count = 0;
+    checkAnswer();
+    if(currentQuestion < lastQuestion){
+      currentQuestion++;
+      renderQuestion();
+    }else{
+      clearInterval(TIMER);
+    }
+  }
+}
 
 function checkAnswer(answer) {
   if( answer == questions[currentQuestion].correct){
     // answer is correct
-    score++;
     renderResult("Correct");
   }else{
     //answer is wrong
     renderResult("Incorrect");
+    count -= 10;
   }
-//   count = 0;
 
   if(currentQuestion < lastQuestion){
     currentQuestion++;
@@ -145,10 +147,22 @@ function checkAnswer(answer) {
     // end the quiz and show the score
     questionsection.classList.add("hidden");
     scoreDiv.classList.remove("hidden");
-    scoreelement.innerHTML = "Your final score " + score;
+    score = count + 1;
     clearInterval(TIMER);
+    scoreelement.innerHTML = "Your final score " + score;
+    logHighScore(account.score);
   }
 }
 
+function logHighScore(){
+  intro.classList.add("hidden");
+  questionsection.classList.add("hidden");
+  scoreDiv.classList.add("hidden");
+  const highLight = JSON.parse(highScoreString) ?? [];
+  const lowestScore = highLight[numbHighScore - 1]?.score ?? 0;
 
-
+  if(score > lowestScore){
+    saveHighScore(score, highScores);
+    showHighScores();
+  }
+}
