@@ -145,8 +145,44 @@ function checkAnswer(answer) {
     score = count + 1;
     clearInterval(TIMER);
     scoreelement.innerHTML = "Your final score " + score;
-    // checkHighScore(account.score);
+    saveToLocal(score);
   }
 }
 
 // highscore functions
+function saveToLocal (value){
+  //Sort before stringify to alsways save scores high to low
+  var sortScores = numbers.sort((a, b) => b.score-a.score);
+  //Stringify object into saveable items
+  var saveableValue = JSON.stringify(value);
+  //Save key highscores with value from saveableValue
+  localStorage.setItem('highscores', saveableValue);
+}
+
+function getScores(){
+  //Get item from local storage
+  var localStorageItem = localStorage.getItem('highscores');
+  //Parses localStorage back into a JSON object
+  var highscores = JSON.parse(localStorageItem);
+  //Return Array object
+  return highscores;
+}
+
+var initials = document.getElementById('name');
+var numbers = document.getElementById('score');
+
+function submitScore(initials, score){
+  //Get current store of saved stuff, should be the shape of an object
+  var highscores = getScores();
+  console.log(highscores);
+  //Assign arguments key and value pair to an object
+  var objToSave = {
+      initials:initials,
+      score:score
+  }
+  //Add new score to array of all scores
+  highscores.push(objToSave);
+  //Save array to localStorage
+  saveToLocal(highscores);
+}
+submitScore(initials, score);

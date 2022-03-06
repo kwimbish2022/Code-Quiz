@@ -4,16 +4,18 @@
 
 /* define colors */
 :root {
-  --primary: #0e282c;
+  --primary: #18474d;
   --secondary: #10434b;
   --tertiary: #a1dce6;
 }
 
 body {
   color: var(--primary);
+  background-color: #a1dce6;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
   text-align: center;
+  font-size: 45px;
 }
 
 /* apply styles to header */
@@ -22,17 +24,16 @@ header {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  font-size: 62.5%;   
+  font-size: 40%;   
 }
 /* header styles end */
 
 /* apply styles to container */
-.intro {
-  font-size: 35px;
+.container {
   font-weight: bold;
   display: flex;
   text-align: center;
-  position: relative;
+  align-items: flex-start;
 }
 
 .btnOption {
@@ -43,8 +44,4 @@ header {
 
 .hidden {
   visibility: hidden;
-}
-
-.form {
-  position: absolute;
 }
