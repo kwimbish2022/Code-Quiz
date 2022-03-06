@@ -63,11 +63,6 @@ let count = 90;
 const questionTIME = 0; //10 seconds
 let TIMER;
 let score = 0;
-const numbHighScore = 10;
-const highScore = 'highscores';
-const highScoreString = localStorage.getItem(highScore);
-const highLight = JSON.parse(highScoreString) ?? [];
-const lowestScore = highLight[numbHighScore - 1]?.score ?? 0;
 
 // render question
 function renderQuestion() {
@@ -150,19 +145,8 @@ function checkAnswer(answer) {
     score = count + 1;
     clearInterval(TIMER);
     scoreelement.innerHTML = "Your final score " + score;
-    logHighScore(account.score);
+    // checkHighScore(account.score);
   }
 }
 
-function logHighScore(){
-  intro.classList.add("hidden");
-  questionsection.classList.add("hidden");
-  scoreDiv.classList.add("hidden");
-  const highLight = JSON.parse(highScoreString) ?? [];
-  const lowestScore = highLight[numbHighScore - 1]?.score ?? 0;
-
-  if(score > lowestScore){
-    saveHighScore(score, highScores);
-    showHighScores();
-  }
-}
+// highscore functions
